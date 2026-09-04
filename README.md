@@ -42,14 +42,19 @@ the validated motorBike tutorial, with only geometry and reference quantities ch
 FIGURE 2: Validation of the pipeline. (a) The OpenFOAM motorBike tutorial reproduced at Cd 0.4159
 and Cl 0.0722. Filled and open markers are a Ryzen 5 3600 and a Ryzen 5 5600X, which agree to the
 last written digit. (b) Measured Cd for the two cars against published ranges for their vehicle
-class, shown as grey bands. Points are the mean over the final 200 iterations.
+class. Points are the mean over the final 200 iterations. Indicative class ranges appear in
+`analysis/data/tables.py` as `PUBLISHED_UNSOURCED` and are excluded from the figure, because no
+primary source has been traced for them.
 
-The install reproduces the reference tutorial and reproduces bit-identically on a second machine,
-which shows the numerics are the reference ones and are machine-independent. Both cars land inside
-the published range for their class with nothing tuned toward that agreement. Comparative RANS is
-robust where absolute RANS carries more uncertainty, because mesh and turbulence-model error
-largely cancel when both bodies run an identical pipeline. The ratios reported here are the result,
-and absolute Cd is approximate.
+The install reproduces the reference tutorial, and the same case reproduces identically on the two
+machines tested. This shows the numerics are the reference ones and that the result is stable
+across those two configurations. Two machines do not establish machine independence in general.
+
+Running both bodies through an identical pipeline is the rationale for reporting ratios: mesh and
+turbulence-model error are expected to act in the same direction on both, so a ratio is less
+sensitive to them than either absolute value. This study does not quantify how far that
+cancellation goes for these cases. The ratios reported here are the result, and absolute Cd is
+approximate.
 
 ## 4. Drag
 

@@ -18,9 +18,17 @@ set --
 . /usr/lib/openfoam/openfoam2512/etc/bashrc
 set -e
 U=16.67                      # 60 km/h -- a speed both vehicles actually do
-# STL_OVERRIDE lets the fleet queue point at a staged directory (e.g. on atma,
-# where the Windows D: drive of his PC does not exist)
-STL="${STL_OVERRIDE:-/mnt/d/Blender/Blender Files/Auto tests/cfd/geometry/${LABEL}.stl}"
+# Surface geometry. Defaults to the repository's own geometry/ directory, which
+# ships the autorickshaw wrap (AUTOW.stl). The car and bus surfaces derive from
+# third-party models and are obtained separately: see geometry/README.md.
+# STL_OVERRIDE points the fleet queue at a staged directory on another machine.
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+STL="${STL_OVERRIDE:-${REPO_ROOT}/geometry/${LABEL}.stl}"
+if [ ! -f "$STL" ]; then
+    echo "geometry not found: $STL" >&2
+    echo "See geometry/README.md for how to supply a surface for ${LABEL}." >&2
+    exit 1
+fi
 C=~/aero/${LABEL}
 
 rm -rf $C

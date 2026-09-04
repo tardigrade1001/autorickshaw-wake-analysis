@@ -1,0 +1,10 @@
+# Figure regeneration. Tested on Python 3.12.7.
+numpy==1.26.4
+matplotlib==3.10.0
+
+# Animation scripts (analysis/dustvid.py, analysis/dustcmp.py) only.
+imageio-ffmpeg==0.6.0
+
+# The solves were run on OpenFOAM v2512 under WSL2 Ubuntu 24.04, with Open MPI
+# from that distribution. OpenFOAM is installed separately and is not a pip
+# dependency. See docs/REPORT.md section 4 for the solver configuration.

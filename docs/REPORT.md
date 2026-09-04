@@ -263,13 +263,13 @@ deliberately unchanged** so the near-body face band acts as a control).
 
 ### Result: the auto delivers more sideways air at every height, against *both* cars
 
-![Gust energy against height, three vehicles](../report/cfd_f6_heightprofile.png)
+![Gust energy against height, three vehicles](figures/fields/cfd_f6_heightprofile.png)
 
 *Left: time-integrated lateral gust energy against height. The curve for the auto lies outside
 both cars at every height, with a strong bulge at shin level. Right: the ratio, which peaks
 near 3.4× low down, dips to about 1.9× at chest, and settles near 2.2× at eye height.*
 
-![Gust energy by band, three vehicles](../report/cfd_f1_height.png)
+![Gust energy by band, three vehicles](figures/fields/cfd_f1_height.png)
 
 *The same quantity in the four bands used by earlier drafts, for continuity with numbers
 already circulated. Read the profile above for shape, since four fixed heights impose a
@@ -296,22 +296,22 @@ being asked about, and that is the reason a chart at one fixed height misleads h
 
 ### The view from where you stand
 
-![Gust field at the pedestrian](../report/cfd_f4_gustview.png)
+![Gust field at the pedestrian](figures/fields/cfd_f4_gustview.png)
 
 *The vehicle drives past a stationary pedestrian standing 1.2 m from the kerb. The frame
 change is an exact Galilean shift of the fixed-frame solve, so no re-simulation is involved.
 Bright areas are air being thrown by the vehicle, and black is still air.*
 
 Animated versions run the full pass at 9.2× slow motion with three vehicles stacked:
-[`cfd_f4_gustview_wide.mp4`](../report/cfd_f4_gustview_wide.mp4) (2640×1484, 16:9) and
-[`cfd_f4_gustview_tall.mp4`](../report/cfd_f4_gustview_tall.mp4) (1080×1920, 9:16). At
+[`cfd_f4_gustview_wide.mp4`](media/cfd_f4_gustview_wide.mp4) (2640×1484, 16:9) and
+[`cfd_f4_gustview_tall.mp4`](media/cfd_f4_gustview_tall.mp4) (1080×1920, 9:16). At
 t = 1.70 s the auto reads **1.03 m/s** of disturbed air at eye height against **0.16 m/s** for
 both cars. Note the videos colour by total disturbance `|u - U|`, which is what a person
 actually stands in, while the ratios above isolate the sideways component. The
 band close to the road appears as one continuous sheet for the auto, while both cars show
 separated patches with dark gaps between them.
 
-![Plan view at ankle height](../report/cfd_f5_topview_z0p20.png)
+![Plan view at ankle height](figures/fields/cfd_f5_topview_z0p20.png)
 
 *Seen from above at 0.20 m, coloured by the **sideways** component `|v_y|`, which is the
 quantity the headline is built from. Colouring by total disturbance makes the WagonR appear
@@ -322,7 +322,7 @@ belongs to the drag discussion in §2.*
 > writes are needed for a horizontal cut, and only the vertical plane was pulled back for the
 > refined runs. Treat them as qualitative. Every number quoted in this section comes from the
 > refined mesh. Companion heights:
-[1.00 m](../report/cfd_f5_topview_z1p00.png), [1.60 m](../report/cfd_f5_topview_z1p60.png).
+[1.00 m](figures/fields/cfd_f5_topview_z1p00.png), [1.60 m](figures/fields/cfd_f5_topview_z1p60.png).
 
 ### Vertical transport: a difference of degree
 

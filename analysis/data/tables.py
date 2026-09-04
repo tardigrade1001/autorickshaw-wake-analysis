@@ -17,8 +17,13 @@ DRAG = {
 # Withdrawn autorickshaw result, from the corrupted 0.06 m wrap. REPORT.md s2.
 WITHDRAWN_AUTO = dict(cd=0.6083, band=0.042, aref=1.618, cda=0.984)
 
-# Published class ranges used as an external check. REPORT.md s3.
-PUBLISHED = {"dzire": (0.28, 0.32), "wagonr": (0.32, 0.36)}
+# Indicative class ranges quoted in REPORT.md s3. NO PRIMARY SOURCE has been
+# traced for these values, and a search of reported figures for the Dzire
+# clusters nearer 0.32-0.33 than the 0.28-0.32 quoted there. They are retained
+# here for the record and are NOT plotted or used as a validation check until a
+# citable source is attached. See TODO.md.
+PUBLISHED_UNSOURCED = {"dzire": (0.28, 0.32), "wagonr": (0.32, 0.36)}
+PUBLISHED = {}          # empty: nothing is drawn from an uncited range
 
 # Validation against the OpenFOAM motorBike tutorial, reproduced bit-identically
 # on two machines. REPORT.md s3.
