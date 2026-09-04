@@ -1,0 +1,19 @@
+FoamFile { version 2.0; format ascii; class volScalarField; object s; }
+dimensions      [0 0 0 0 0 0 0];
+internalField   uniform 0;
+boundaryField
+{
+    #includeEtc "caseDicts/setConstraintTypes"
+    inlet
+    {
+        // road-level dust layer carried IN by the flow, not diffused off the wall
+        type            fixedProfile;
+        profile         table ((0 1) (0.28 1) (0.32 0) (12 0));
+        direction       (0 0 1);
+        origin          0;
+    }
+    outlet      { type inletOutlet; inletValue uniform 0; value uniform 0; }
+    lowerWall   { type zeroGradient; }
+    vehicle     { type zeroGradient; }
+    ".*"        { type zeroGradient; }
+}

@@ -1,0 +1,20 @@
+FoamFile { version 2.0; format ascii; class volScalarField; object s; }
+dimensions      [0 0 0 0 0 0 0];
+internalField   uniform 0;
+boundaryField
+{
+    #includeEtc "caseDicts/setConstraintTypes"
+    inlet
+    {
+        // RAISED source: 0.5-1.0 m. Same slab thickness as AUTOW_D supplied,
+        // lifted 0.5 m. Evaluates 0 at z=0.25, 1 at z=0.75, 0 at z=1.25.
+        type            fixedProfile;
+        profile         table ((0 0) (0.48 0) (0.52 1) (0.98 1) (1.02 0) (12 0));
+        direction       (0 0 1);
+        origin          0;
+    }
+    outlet      { type inletOutlet; inletValue uniform 0; value uniform 0; }
+    lowerWall   { type zeroGradient; }
+    vehicle     { type zeroGradient; }
+    ".*"        { type zeroGradient; }
+}

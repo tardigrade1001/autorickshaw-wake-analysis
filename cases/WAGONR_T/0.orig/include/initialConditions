@@ -1,0 +1,4 @@
+flowVelocity         (16.67 0 0);
+pressure             0;
+turbulentKE          0.042;
+turbulentOmega       2.2;
