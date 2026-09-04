@@ -40,8 +40,8 @@ def fig_gust_height():
     ax.set_ylim(0, 1.8)
     ax.legend(loc="upper right")
     ts.guides(ax, [(EYE, "eye")])
-    ax.text(1.95, EYE + 0.03, "eye level 1.66 m", ha="right", va="bottom",
-            fontsize=9.5, color="#5A5A5A")
+    ax.text(0.27, EYE + 0.03, "eye level 1.66 m", ha="left", va="bottom",
+            fontsize=9.5, color=ts.GHOST)
     ts.panel(ax, "a", dx=-0.14)
 
     axr.plot(a / w, z, color=ts.C["wagonr"], label="against WagonR",
