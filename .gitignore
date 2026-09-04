@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.tgz
+*.zip
+# raw field data stays out: sampled planes and meshes run to gigabytes.
+# analysis/data/diagonal_profiles.npz is the committed derived extract.
+postProcessing/
+processor*/
+constant/polyMesh/
+constant/extendedFeatureEdgeMesh/
+log.*
+*_master.mp4

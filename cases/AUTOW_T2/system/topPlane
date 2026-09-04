@@ -1,0 +1,18 @@
+topPlane
+{
+    type            surfaces;
+    libs            (sampling);
+    fields          (U p);
+    interpolationScheme cellPoint;
+    surfaceFormat   raw;
+    surfaces
+    {
+        top
+        {
+            type        cuttingPlane;
+            point       (0 0 1.6);
+            normal      (0 0 1);
+            interpolate true;
+        }
+    }
+}

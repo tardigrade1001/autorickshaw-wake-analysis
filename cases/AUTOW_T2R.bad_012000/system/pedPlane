@@ -1,0 +1,19 @@
+pedPlane
+{
+    type            surfaces;
+    libs            (sampling);
+    writeControl    onEnd;
+    surfaceFormat   raw;
+    fields          (U p);
+    interpolationScheme cellPoint;
+    surfaces
+    {
+        ped
+        {
+            type            cuttingPlane;
+            point           (0 1.2 0);
+            normal          (0 1 0);
+            interpolate     true;
+        }
+    }
+}

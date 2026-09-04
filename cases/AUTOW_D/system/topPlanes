@@ -1,0 +1,12 @@
+type            surfaces;
+libs            ("libsampling.so");
+writeControl    writeTime;
+surfaceFormat   raw;
+interpolate     true;
+fields          ( s U );
+surfaces
+{
+    z0p20 { type cuttingPlane; point (0 0 0.20); normal (0 0 1); interpolate true; }
+    z0p60 { type cuttingPlane; point (0 0 0.60); normal (0 0 1); interpolate true; }
+    z1p00 { type cuttingPlane; point (0 0 1.00); normal (0 0 1); interpolate true; }
+}

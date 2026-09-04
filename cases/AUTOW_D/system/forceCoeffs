@@ -1,0 +1,18 @@
+FoamFile { version 2.0; format ascii; class dictionary; object forceCoeffs; }
+forceCoeffs1
+{
+    type            forceCoeffs;
+    libs            (forces);
+    writeControl    timeStep;
+    writeInterval   1;
+    patches         (vehicle);
+    rho             rhoInf;
+    rhoInf          1.225;
+    liftDir         (0 0 1);
+    dragDir         (1 0 0);
+    CofR            (2.765 0 0.5);
+    pitchAxis       (0 1 0);
+    magUInf         16.67;
+    lRef            2.765;
+    Aref            2.162;
+}

@@ -1,0 +1,59 @@
+FoamFile { version 2.0; format ascii; class dictionary; object controlDict; }
+application     pimpleFoam;
+startFrom       startTime;
+startTime       0;
+stopAt          endTime;
+endTime         2.2;
+deltaT          0.0005;
+writeControl    adjustableRunTime;
+writeInterval   0.5;
+purgeWrite      0;
+writeFormat     binary;
+writePrecision  8;
+writeCompression off;
+timeFormat      general;
+timePrecision   8;
+runTimeModifiable true;
+adjustTimeStep  yes;
+maxCo           5;
+maxDeltaT       0.01;
+
+functions
+{
+    forceCoeffs1
+    {
+        type            forceCoeffs;
+        libs            (forces);
+        writeControl    timeStep;
+        writeInterval   1;
+        patches         (vehicle);
+        rho             rhoInf;
+        rhoInf          1.225;
+        liftDir         (0 0 1);
+        dragDir         (1 0 0);
+        CofR            (3.638 0 0.5);
+        pitchAxis       (0 1 0);
+        magUInf         16.67;
+        lRef            3.638;
+        Aref            2.266;
+    }
+
+    // planes at three pedestrian standoffs, EVERY timestep, so the pedestrian
+    // time history can be taken as the diagonal x = -U*t through (x,t)
+    pedPlanes
+    {
+        type            surfaces;
+        libs            (sampling);
+        writeControl    timeStep;
+        writeInterval   4;
+        fields          (U p k);
+        interpolationScheme cellPoint;
+        surfaceFormat   raw;
+        surfaces
+        {
+            y1p2 { type cuttingPlane; point (0 1.2 0); normal (0 1 0); interpolate true; }
+            y2p0 { type cuttingPlane; point (0 2.0 0); normal (0 1 0); interpolate true; }
+            y3p0 { type cuttingPlane; point (0 3.0 0); normal (0 1 0); interpolate true; }
+        }
+    }
+}

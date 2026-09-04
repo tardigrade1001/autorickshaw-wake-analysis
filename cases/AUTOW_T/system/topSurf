@@ -1,0 +1,18 @@
+topSurf
+{
+    type            surfaces;
+    libs            (sampling);
+    writeControl    none;
+    surfaceFormat   raw;
+    fields          (U);
+    interpolationScheme cellPoint;
+    surfaces
+    {
+        z0p20 { type plane; planeType pointAndNormal;
+                pointAndNormalDict { point (0 0 0.20); normal (0 0 1); } }
+        z1p00 { type plane; planeType pointAndNormal;
+                pointAndNormalDict { point (0 0 1.00); normal (0 0 1); } }
+        z1p60 { type plane; planeType pointAndNormal;
+                pointAndNormalDict { point (0 0 1.60); normal (0 0 1); } }
+    }
+}
