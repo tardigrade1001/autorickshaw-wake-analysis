@@ -129,7 +129,10 @@ def stl_plan(path):
 def person(ax, x=0.0, col="#ff4f3a", z=10):
     """A recognisable human, so 'up at your face' is legible without a caption."""
     out = [ax.add_patch(plt.Circle((x, 1.66), 0.10, color=col, zorder=z))]
-    for pts, lw in ([([x, x], [0.0, 1.55]), 4.5],
+    # The trunk starts at the HIP (0.78), where the legs fork. Drawing it from
+    # the ground up instead puts a line straight down between the legs, which
+    # reads as anatomy nobody intended.
+    for pts, lw in ([([x, x], [0.78, 1.55]), 4.5],
                     [([x - 0.22, x, x + 0.19], [0.86, 1.34, 0.92]), 3.0],
                     [([x - 0.17, x, x + 0.17], [0.0, 0.78, 0.0]), 3.4]):
         out += ax.plot(*pts, color=col, lw=lw, zorder=z, solid_capstyle="round")

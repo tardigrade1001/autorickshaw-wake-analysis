@@ -1,5 +1,11 @@
 # Vehicle Aerodynamics and Pedestrian-Gust Modelling
 
+![Road dust behind an autorickshaw and a WagonR](docs/media/dust_comparison.gif)
+
+Two vehicles, one dust supply, identical domain and mesh. The autorickshaw carries road air to
+waist height and the hatchback holds it at the ankles, a factor of 23 at 1.0 m. Neither reaches
+the face. Full resolution in [docs/media/](docs/media/).
+
 This study measures the air and road dust a passing vehicle delivers to a person standing at the
 kerb. Four road vehicles were run through one identical CFD pipeline, from geometry preparation
 and a documented acceptance test, through steady and transient solves, to figures that regenerate
@@ -109,6 +115,12 @@ frame change is exact and a fixed-frame solve answers a roadside question about 
 directly. A plane-wide maximum is a different quantity and is excluded throughout, because it
 reports air the pedestrian never stands in.
 
+![The pass at the pedestrian plane, three vehicles](docs/media/gust_pass.gif)
+
+The full pass at the pedestrian plane, 9.2x slow motion, one colour scale across all three
+vehicles. Bright is air the vehicle is throwing. The eye line is marked on each panel and the
+strip at the right reads the speed at the person.
+
 ![Lateral gust energy against height](docs/figures/fig06_gust_height.png)
 
 FIGURE 6: Time-integrated lateral gust energy along the pedestrian diagonal on the refined mesh.
@@ -206,6 +218,10 @@ motion the solve never computed.
   the autorickshaw against the eye line.
 - [`docs/media/cfd_f10_dustcmp_wide.mp4`](docs/media/cfd_f10_dustcmp_wide.mp4) places the
   autorickshaw and the WagonR on one shared colour scale.
+
+Both animations above are also embedded in this README as looping GIFs, at
+[`docs/media/dust_comparison.gif`](docs/media/dust_comparison.gif) and
+[`docs/media/gust_pass.gif`](docs/media/gust_pass.gif).
 
 The steady cases are time-averaged solutions, so they are shown as still figures only.
 `docs/figures/fields/` holds the field visualisations these animations are drawn from. Those use a
