@@ -28,7 +28,7 @@ Two claims are examined, and they require different instruments.
    along the path that person walks?
 
 The drag results bear on the exposure question only through the shared geometry. Section 5 reports
-the exposure result on its own transient cases.
+the exposure result on separate transient cases.
 
 ## 2. Study design
 
@@ -47,7 +47,7 @@ the validated motorBike tutorial, with only geometry and reference quantities ch
 
 FIGURE 2: Verification of the pipeline. (a) The OpenFOAM motorBike tutorial reproduced at Cd 0.4159
 and Cl 0.0722. Filled and open markers are a Ryzen 5 3600 and a Ryzen 5 5600X, which agree to the
-last written digit. (b) Computed Cd for the two cars against published ranges for their vehicle
+last written digit. (b) Computed Cd for the two cars against published ranges for the vehicle
 class. Points are the mean over the final 200 iterations. Indicative class ranges appear in
 `analysis/data/tables.py` as `PUBLISHED_UNSOURCED` and stay in the data module until a primary
 source is traced for them.
@@ -74,7 +74,7 @@ remains open. The ratios reported here are the result, and absolute Cd is approx
 FIGURE 3: Force-coefficient history for all four vehicles. (a) The full 1000 iterations. (b) The
 final 400 iterations, with the shaded averaging window and each vehicle window mean as a dashed
 line. Steady RANS on a bluff body settles into a limit cycle and continues to oscillate, so every
-value quoted here is a mean over the final 200 iterations with its oscillation band. Colours follow
+value quoted here is a mean over the final 200 iterations with the oscillation band. Colours follow
 the fixed mapping used throughout: red autorickshaw, blue WagonR, grey Dzire, black city bus.
 
 ![Drag coefficient by vehicle](docs/figures/fig04_cd_summary.png)
@@ -109,7 +109,7 @@ four: bus 0.527, autorickshaw 0.434, WagonR 0.338, Dzire 0.281. On Cd.A it is se
 four and 4.4x below the bus. This result describes a moderate difference within the ordinary range
 of road vehicles. Two comparator cars support a comparison against those two vehicles, and a claim
 about Indian cars in general would require a fleet. The bus is a Japanese city bus, used here as
-an upper bound on road-vehicle drag, and its result speaks for that vehicle alone.
+an upper bound on road-vehicle drag, and the result speaks for that vehicle alone.
 
 ## 5. Pedestrian exposure
 
@@ -143,7 +143,7 @@ ordering that the continuous curves show to be height-dependent. Read the profil
 and chest energies moved 8 to 17% between the baseline and refined meshes, and ankle and knee
 energies roughly doubled. Two meshes give a sensitivity result. Grid convergence needs a third,
 finer mesh, which remains to be run, so the low-level magnitudes stay mesh-dependent and the
-analysis establishes their direction only.
+analysis establishes direction only.
 
 ![Vertical transport by height](docs/figures/fig07_vertical_transport.png)
 
@@ -194,7 +194,7 @@ The autorickshaw column holds 0.538 m against 0.473 m for the WagonR, within 14%
 and the autorickshaw standard deviation is 1.8x larger. A comparable quantity of tracer occupies
 the column in both cases, distributed higher and more variably behind the autorickshaw. This is
 consistent with vertical redistribution as the mechanism. A spurious source in the autorickshaw
-case would add tracer to its column, and the two integrals agree to within 14%, so the measurement
+case would add tracer to that column, and the two integrals agree to within 14%, so the measurement
 favours redistribution. Ruling one out would need a mass budget on the scalar, which remains
 to be run. Section 7 of the report quotes 0.472 m and 0.431 m for this comparison, computed on a
 coarser height grid, and both versions support the same conclusion.
@@ -256,7 +256,7 @@ present in the wrap, offset 3 to 7 cm in one consistent direction, which is the 
 correct isosurface.
 
 The checks in place at the time fired lateral rays and confirmed that the open flanks survived.
-That is a true result about the flanks, and the front face needed a test of its own. The
+That is a true result about the flanks, and the front face needed a separate test. The
 streamwise census exposed the defect in one pass. The acceptance test now requires both censuses,
 agreement at every height where the source has a face, boundary edges 0, non-manifold 0, islands
 1, and a bounding box checked against real-world dimensions.
@@ -280,9 +280,9 @@ at the same 0.5 m base cell. snappyHexMesh refinement levels are relative to the
 holding it fixed keeps the effective surface resolution comparable across cases.
 
 Limitations that apply to every case: wheels are static geometry, the voxel wrap smooths the
-underbody into a shell, and the autorickshaw is simulated empty, which is its most aerodynamically
-favourable configuration. The bus mesh is coarser relative to its size at 2.48M cells over an 11 m
-body, so its Cd carries more uncertainty and serves to bracket the range.
+underbody into a shell, and the autorickshaw is simulated empty, the most aerodynamically
+favourable configuration. The bus mesh is coarser relative to size at 2.48M cells over an 11 m
+body, so the bus Cd carries more uncertainty and serves to bracket the range.
 
 ## 9. Repository layout
 
@@ -319,7 +319,7 @@ python fig_exposure.py    # figures 6 to 11
 It and the two animation scripts are the only code that touches the full field data.
 
 The sampled surfaces run to tens of gigabytes and stay outside the repository. Every script that
-reads them resolves its location through `analysis/paths.py`, which takes three environment
+reads them resolves the location through `analysis/paths.py`, which takes three environment
 variables and records the local default for each:
 
 ```bash
@@ -364,11 +364,11 @@ this study. Licences were read from the Sketchfab API on 2026-09-05:
 `geometry/README.md` carries the model links and the reference quantities. The three included
 surfaces are byte-identical to the ones the reported runs used, checked by MD5 against each solved
 case. The bus surface stays out, because CC BY 4.0 covers the rest of this material and a
-NonCommercial derivative needs terms of its own. The bus contributes measured numbers to the
+NonCommercial derivative needs separate terms. The bus contributes measured numbers to the
 figures, and those numbers are free to publish, so every figure here builds from the three
 included surfaces. The wrapping procedure and the acceptance test are documented in section 7, so the
 pipeline reproduces on any source mesh.
 
 Code and analysis are released under MIT. Figures, report text and animations are released under
 CC BY 4.0. The vehicle surfaces in `geometry/` remain under CC Attribution and carry credit to
-their original authors.
+the original authors.

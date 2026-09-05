@@ -1,7 +1,7 @@
 # Before public release
 
 Status: the repository regenerates all twelve figures from committed data on a fresh clone,
-rebuilds an OpenFOAM case from its own geometry, and runs both animation scripts end to end.
+rebuilds an OpenFOAM case from the committed geometry, and runs both animation scripts end to end.
 
 ## Open
 

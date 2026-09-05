@@ -13,11 +13,11 @@ surfaces are staged elsewhere.
 Each included file is a voxel-wrapped derivative of the model beside it, made for this study. The
 autorickshaw and both cars are wrapped at 0.02 m, the bus at 0.03 m. Every licence above was read
 from the Sketchfab API on 2026-09-05, and the derivatives are redistributed here under the same
-terms with attribution to their authors.
+terms with attribution to the original authors.
 
-The bus surface stays outside the repository. Its source model is CC Attribution-NonCommercial,
-and CC BY 4.0 covers the rest of this material, so a NonCommercial derivative needs terms of its
-own. Shipping it would carry a non-commercial restriction into an otherwise permissive
+The bus surface stays outside the repository. The source model is CC Attribution-NonCommercial,
+and CC BY 4.0 covers the rest of this material, so a NonCommercial derivative needs separate
+terms. Shipping it would carry a non-commercial restriction into an otherwise permissive
 repository. The bus contributes measured numbers to the report, and every figure here builds from
 the three included surfaces. Any closed vehicle surface at real-world scale substitutes for it,
 and the pipeline is agnostic to the source.
@@ -36,7 +36,7 @@ section 7 of `../README.md` before meshing. The test requires:
 - `boundary edges = 0`, `non-manifold = 0`, `islands = 1`
 - a bounding box checked against real-world dimensions
 
-A 0.06 m wrap erased the autorickshaw windscreen and inflated its Cd by 29%, which is the failure
+A 0.06 m wrap erased the autorickshaw windscreen and inflated the Cd by 29%, which is the failure
 this test exists to catch. Figure 12 shows the census that exposed it.
 
 Frame convention throughout: flow along +X, nose at x = 0, ground at z = 0, centreline at y = 0.
