@@ -324,15 +324,21 @@ Colour carries meaning and holds across every figure: red autorickshaw, blue Wag
 black city bus, purple controls, orange the raised-source experiment. The shared visual grammar
 lives in `analysis/thesis_style.py`, and the generator scripts contain no literal colours or sizes.
 
-Geometry provenance:
+Geometry provenance. Every surface is a voxel-wrapped derivative of a Sketchfab model, made for
+this study. Licences were read from the Sketchfab API on 2026-09-05:
 
-| mesh | source |
-|---|---|
-| autorickshaw | modelled and wrapped for this study |
-| WagonR, Dzire, bus | third-party models, wrapped for this study |
+| surface | source model | author | licence | ships here |
+|---|---|---|---|---|
+| autorickshaw | Low Poly Autorickshaw aka TukTuk | Nirmal.Justin | CC Attribution | yes |
+| WagonR | 2013 Suzuki WagonR | BHP3D | CC Attribution | yes |
+| Dzire | 2022 Maruti Suzuki Swift Dzire | BHP3D | CC Attribution | yes |
+| city bus | Nagoya city bus | licence not yet traced | | no |
 
-The third-party vehicle meshes stay outside this repository. The wrapping procedure and the
+`geometry/README.md` carries the model links and the reference quantities. The three included
+surfaces are byte-identical to the ones the reported runs used, checked by MD5 against each solved
+case. The bus surface stays out until its licence is traced. The wrapping procedure and the
 acceptance test are documented in section 7, so the pipeline reproduces on any source mesh.
 
 Code and analysis are released under MIT. Figures, report text and animations are released under
-CC BY 4.0.
+CC BY 4.0. The vehicle surfaces in `geometry/` remain under CC Attribution and carry credit to
+their original authors.

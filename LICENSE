@@ -25,3 +25,15 @@ SOFTWARE.
 The figures in docs/figures/, the report text in docs/, and the animations in
 docs/media/ are released under Creative Commons Attribution 4.0 International
 (CC BY 4.0). See https://creativecommons.org/licenses/by/4.0/
+
+---
+
+The vehicle surfaces in geometry/ are voxel-wrapped derivatives of third-party
+models published on Sketchfab under Creative Commons Attribution. They are
+redistributed here under those same terms, with credit to their authors:
+
+    AUTOW.stl   Low Poly Autorickshaw aka TukTuk, by Nirmal.Justin
+    WAGONR.stl  2013 Suzuki WagonR, by BHP3D
+    DZIRE.stl   2022 Maruti Suzuki Swift Dzire, by BHP3D
+
+Model links and licence provenance are recorded in geometry/README.md.

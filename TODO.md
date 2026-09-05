@@ -11,13 +11,21 @@ rebuilds an OpenFOAM case from its own geometry, and runs both animation scripts
       Restore the band in Figure 2b and Figure 4 once a citation exists. Section 3 of
       `docs/REPORT.md` now states plainly that the ranges carry no citation, so the report is
       accurate as it stands and the citation upgrades it.
-- [ ] **Decide on the third-party surfaces.** `geometry/README.md` documents how to supply
-      them. An open, redistributable comparator car would let a reader reproduce a full
-      comparison.
+- [ ] **Trace the bus model's licence.** It is the one surface still outside the repository.
+      Everything else about the bus case is already committed.
 - [ ] **Configure the git remote and push.** Nothing is pushed yet. Needs a repository name
       and a public or private decision.
 
 ## Done in this pass (2026-09-05)
+
+- [x] Geometry licences traced through the Sketchfab API. The autorickshaw, WagonR and
+      Dzire source models are all Creative Commons Attribution, so their wraps ship here
+      with credit to Nirmal.Justin and BHP3D. `geometry/`, `LICENSE` and section 11 of the
+      README record author, model link and licence for each.
+- [x] `WAGONR.stl` and `DZIRE.stl` committed, MD5-matched to the surfaces the reported runs
+      used. The three-vehicle comparison now reproduces from the repository alone.
+- [x] Corrected the provenance claim. The autorickshaw was recorded as modelled for this
+      study. It is a wrapped derivative of a third-party model, like both cars.
 
 - [x] `analysis/paths.py` resolves every field, output and geometry location through
       `VEHICLE_AERO_FIELDS`, `VEHICLE_AERO_OUT` and `VEHICLE_AERO_GEOMETRY`, each with the

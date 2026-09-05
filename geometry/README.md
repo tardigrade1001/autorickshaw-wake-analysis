@@ -3,16 +3,23 @@
 `mkcase.sh` reads `geometry/<LABEL>.stl`. Override the directory with `STL_OVERRIDE` when the
 surfaces are staged elsewhere.
 
-| file | status | source |
-|---|---|---|
-| `AUTOW.stl` | included | autorickshaw, modelled and voxel-wrapped for this study at 0.02 m |
-| `WAGONR.stl` | obtained separately | third-party model, voxel-wrapped at 0.02 m |
-| `DZIRE.stl` | obtained separately | third-party model, voxel-wrapped at 0.02 m |
-| `BUS.stl` | obtained separately | third-party model of a Nagoya city bus, voxel-wrapped at 0.03 m |
+| file | status | source model | author | licence |
+|---|---|---|---|---|
+| `AUTOW.stl` | included | [Low Poly Autorickshaw aka TukTuk](https://sketchfab.com/3d-models/low-poly-autorickshaw-aka-tuktuk-c7c87455ad014b3f9fc8c9fb2d164a61) | Nirmal.Justin | CC Attribution |
+| `WAGONR.stl` | included | [2013 Suzuki WagonR](https://sketchfab.com/3d-models/2013-suzuki-wagonr-71112627f42342099ff95b59e7532663) | BHP3D | CC Attribution |
+| `DZIRE.stl` | included | [2022 Maruti Suzuki Swift Dzire](https://sketchfab.com/3d-models/2022-maruti-suzuki-swift-dzire-95451c00cb2d48778f67d798167e7237) | BHP3D | CC Attribution |
+| `BUS.stl` | obtained separately | Nagoya city bus, third-party model | licence not yet traced | |
 
-The three third-party surfaces stay outside this repository because they are derived works of
-models this study did not author. Any closed vehicle surface at real-world scale substitutes for
-them, and the pipeline is agnostic to the source.
+Each included file is a voxel-wrapped derivative of the model beside it, made for this study. The
+autorickshaw and both cars are wrapped at 0.02 m, the bus at 0.03 m. Every licence above was read
+from the Sketchfab API on 2026-09-05, and the derivatives are redistributed here under the same
+terms with attribution to their authors.
+
+The bus surface stays outside the repository until its licence is traced. Any closed vehicle
+surface at real-world scale substitutes for it, and the pipeline is agnostic to the source.
+
+The three included files are byte-identical to the surfaces the reported runs used, checked by MD5
+against `constant/triSurface/vehicle.stl` in each solved case.
 
 ## Preparing a surface
 
