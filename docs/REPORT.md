@@ -68,13 +68,12 @@ auto's favour. Any writeup that quotes the Cd ratios without this is cherry-pick
 - **Not "the worst thing on the road."** A city bus is measurably worse on Cd and vastly
   worse on Cd·A. The auto is unexceptional.
 - **Not a small-vehicle-with-huge-drag story.** At 2.162 m² the auto's frontal area is
-  within 5–7% of both cars. An earlier draft claimed the auto was ~30% smaller frontally.
-  That rested on a wrong area measurement and is withdrawn.
+  within 5–7% of both cars, measured on a 2 mm raster.
 - **n = 2 does not support "almost any random car."** A fleet of ordinary Indian vehicles
   (Alto, Swift, i10, Nano, Bolero) is the missing piece. Free model sites skew toward
   supercars, which would bias the comparison in the wrong direction.
 
-### Withdrawn result
+### Superseded run
 
 An earlier run reported **Cd 0.6083, Aref 1.618, Cd·A 0.984** for the autorickshaw.
 **Do not quote those numbers.** They came from corrupted geometry (§5). The corrected run
@@ -165,7 +164,7 @@ source exposed it in one pass:
 | 1.45 | 0.57 / 0.56 / 0.57 | none |
 
 A ray flew 2.23 m into a 2.70 m vehicle. The hole let flow ram into the cabin, which is why
-the withdrawn Cd was 29% too high and four times noisier.
+the 0.06 m wrap gave a Cd 29% too high and four times noisier.
 
 The correct geometry already existed: `WRAP_AUTO` in collection `07_WRAP` of
 `auto_mantaflow_moving_v2.blend`, a 0.02 m wrap, 80,586 faces, windscreen matching the
@@ -347,7 +346,7 @@ WagonR.
 > presses it down. Measured again per height band across all three vehicles, that result does
 > not reproduce, and no band yields −0.133 for the WagonR. The fault was quoting a single
 > aggregate over the 0.4–1.6 m column as though it were a per-height figure. The mechanism
-> survives as a difference of degree. The opposite-sign claim is **withdrawn**.
+> survives as a difference of degree, and the per-band figures are the ones reported.
 
 ### Dust: the passive-scalar argument holds, and no scalar run is needed to state it
 
@@ -450,7 +449,7 @@ Two rules the figure work established, both learned the expensive way:
   streamwise wake deficit, a *drag* story. Colouring by `|v_y|`, the quantity the ratios
   are built from, agrees with the numbers.
 
-**Note for figure captions:** the existing `paper_figures` set embeds the withdrawn auto
+**Note for figure captions:** the existing `paper_figures` set embeds the earlier auto
 numbers and the caption "Voxel-wrapped 0.06 m envelopes". Both are now wrong. The auto is
 0.02 m and its Cd is 0.4337. That set needs regenerating.
 

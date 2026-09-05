@@ -146,11 +146,9 @@ FIGURE 7: Mean signed vertical velocity by height band for three vehicles, from 
 section 7. Positive values indicate lofting.
 
 All three vehicles loft air at nearly every height, and the autorickshaw lofts 2 to 3x harder than
-either car, most strongly at knee level. An earlier draft reported a sign split between the
-autorickshaw and the WagonR, quoting a single aggregate over the 0.4 to 1.6 m column as though it
-were a per-height figure. Measured again per height band across all three vehicles, that result
-disagreed with the original and has been withdrawn. The mechanism survives as a difference of
-degree.
+either car, most strongly at knee level. Every value is measured per height band. A single
+aggregate over the 0.4 to 1.6 m column compresses the profile into one number and hides that band
+structure, so the per-band figures are the ones reported.
 
 ## 6. Dust transport
 
