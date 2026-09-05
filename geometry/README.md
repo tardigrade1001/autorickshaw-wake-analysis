@@ -8,15 +8,19 @@ surfaces are staged elsewhere.
 | `AUTOW.stl` | included | [Low Poly Autorickshaw aka TukTuk](https://sketchfab.com/3d-models/low-poly-autorickshaw-aka-tuktuk-c7c87455ad014b3f9fc8c9fb2d164a61) | Nirmal.Justin | CC Attribution |
 | `WAGONR.stl` | included | [2013 Suzuki WagonR](https://sketchfab.com/3d-models/2013-suzuki-wagonr-71112627f42342099ff95b59e7532663) | BHP3D | CC Attribution |
 | `DZIRE.stl` | included | [2022 Maruti Suzuki Swift Dzire](https://sketchfab.com/3d-models/2022-maruti-suzuki-swift-dzire-95451c00cb2d48778f67d798167e7237) | BHP3D | CC Attribution |
-| `BUS.stl` | obtained separately | Nagoya city bus, third-party model | licence not yet traced | |
+| `BUS.stl` | obtained separately | [Japanese bus "Nagoya City Bus" (Aichi)](https://sketchfab.com/3d-models/japanese-bus-nagoya-city-bus-aichi-37c0a04a7aef4139b6aa037d17e768e5) | VRC-IW | CC Attribution-NonCommercial |
 
 Each included file is a voxel-wrapped derivative of the model beside it, made for this study. The
 autorickshaw and both cars are wrapped at 0.02 m, the bus at 0.03 m. Every licence above was read
 from the Sketchfab API on 2026-09-05, and the derivatives are redistributed here under the same
 terms with attribution to their authors.
 
-The bus surface stays outside the repository until its licence is traced. Any closed vehicle
-surface at real-world scale substitutes for it, and the pipeline is agnostic to the source.
+The bus surface stays outside the repository. Its source model is CC Attribution-NonCommercial,
+and a NonCommercial derivative cannot be released under the CC BY 4.0 that covers the rest of this
+material. Shipping it would carry a non-commercial restriction into an otherwise permissive
+repository. The bus contributes measured numbers to the report and no geometry to any figure, so
+nothing here depends on redistributing it. Any closed vehicle surface at real-world scale
+substitutes for it, and the pipeline is agnostic to the source.
 
 The three included files are byte-identical to the surfaces the reported runs used, checked by MD5
 against `constant/triSurface/vehicle.stl` in each solved case.

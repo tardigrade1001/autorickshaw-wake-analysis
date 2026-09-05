@@ -332,12 +332,14 @@ this study. Licences were read from the Sketchfab API on 2026-09-05:
 | autorickshaw | Low Poly Autorickshaw aka TukTuk | Nirmal.Justin | CC Attribution | yes |
 | WagonR | 2013 Suzuki WagonR | BHP3D | CC Attribution | yes |
 | Dzire | 2022 Maruti Suzuki Swift Dzire | BHP3D | CC Attribution | yes |
-| city bus | Nagoya city bus | licence not yet traced | | no |
+| city bus | Japanese bus "Nagoya City Bus" (Aichi) | VRC-IW | CC Attribution-NonCommercial | no |
 
 `geometry/README.md` carries the model links and the reference quantities. The three included
 surfaces are byte-identical to the ones the reported runs used, checked by MD5 against each solved
-case. The bus surface stays out until its licence is traced. The wrapping procedure and the
-acceptance test are documented in section 7, so the pipeline reproduces on any source mesh.
+case. The bus surface stays out: a NonCommercial derivative cannot be released under the CC BY 4.0
+that covers the rest of this material. The bus contributes measured numbers and no geometry to any
+figure, so nothing here depends on redistributing it. The wrapping procedure and the acceptance
+test are documented in section 7, so the pipeline reproduces on any source mesh.
 
 Code and analysis are released under MIT. Figures, report text and animations are released under
 CC BY 4.0. The vehicle surfaces in `geometry/` remain under CC Attribution and carry credit to

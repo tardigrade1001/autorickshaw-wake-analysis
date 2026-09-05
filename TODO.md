@@ -11,13 +11,16 @@ rebuilds an OpenFOAM case from its own geometry, and runs both animation scripts
       Restore the band in Figure 2b and Figure 4 once a citation exists. Section 3 of
       `docs/REPORT.md` now states plainly that the ranges carry no citation, so the report is
       accurate as it stands and the citation upgrades it.
-- [ ] **Trace the bus model's licence.** It is the one surface still outside the repository.
-      Everything else about the bus case is already committed.
-- [ ] **Configure the git remote and push.** Nothing is pushed yet. Needs a repository name
-      and a public or private decision.
+- [ ] **Push.** Name and visibility are settled: `vehicle-aero-pedestrian-gust`, public. The
+      repository is ready and the working tree is clean.
+      `gh repo create vehicle-aero-pedestrian-gust --public --source=. --remote=origin --push`
 
 ## Done in this pass (2026-09-05)
 
+- [x] The bus model traced: Japanese bus "Nagoya City Bus" (Aichi) by VRC-IW, **CC
+      Attribution-NonCommercial**. `BUS.stl` stays out, because a NonCommercial derivative
+      cannot be released under the repository's CC BY 4.0. The bus contributes measured
+      numbers and no geometry to any figure, so nothing depends on shipping it.
 - [x] Geometry licences traced through the Sketchfab API. The autorickshaw, WagonR and
       Dzire source models are all Creative Commons Attribution, so their wraps ship here
       with credit to Nirmal.Justin and BHP3D. `geometry/`, `LICENSE` and section 11 of the
