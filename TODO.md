@@ -11,9 +11,9 @@ rebuilds an OpenFOAM case from its own geometry, and runs both animation scripts
       Restore the band in Figure 2b and Figure 4 once a citation exists. Section 3 of
       `docs/REPORT.md` now states plainly that the ranges carry no citation, so the report is
       accurate as it stands and the citation upgrades it.
-- [ ] **Push.** Name and visibility are settled: `vehicle-aero-pedestrian-gust`, public. The
+- [ ] **Push.** Name and visibility are settled: `autorickshaw-wake-analysis`, public. The
       repository is ready and the working tree is clean.
-      `gh repo create vehicle-aero-pedestrian-gust --public --source=. --remote=origin --push`
+      `gh repo create autorickshaw-wake-analysis --public --source=. --remote=origin --push`
 
 ## Done in this pass (2026-09-05)
 
