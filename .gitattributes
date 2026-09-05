@@ -1,0 +1,9 @@
+# Line endings are pinned, because this repository is authored on Windows and
+# the shell scripts run under WSL and Linux. A CRLF shebang fails there with
+# "bad interpreter: /bin/bash^M", which reads as a missing interpreter.
+* text=auto eol=lf
+
+*.png binary
+*.mp4 binary
+*.stl binary
+*.npz binary
