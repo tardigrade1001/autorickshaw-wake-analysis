@@ -15,7 +15,7 @@ later and is addressed in §7:
 
 > "As a pedestrian on the street, an auto throws more dust in my eyes than a car does."
 
-These need different instruments, and none of the drag results below bear on the dust one.
+These need different instruments, and the drag results below stand independently of the dust one.
 
 ---
 
@@ -42,15 +42,16 @@ Ratios, autorickshaw against each comparator:
 
 *An autorickshaw has roughly 1.3× the drag coefficient of a tall boxy hatchback and
 1.5× that of a subcompact sedan, at essentially the same frontal area, so it
-experiences about 1.2–1.4× the aerodynamic drag force at the same speed.*
+experiences about 1.2 to 1.4× the aerodynamic drag force at the same speed.*
 
 Lead with the **WagonR**. It is the least flattering comparator available here, tall,
 blunt and ubiquitous. Leading with the 1.54× sedan figure reads as comparator-shopping.
 
 ### The bus sets the upper bound, and the auto is below it
 
-The bus was run as a **bracket**, not as a peer: it establishes what a genuinely bad road
-vehicle shape measures at on this identical pipeline. At **Cd 0.5268** it is 21% worse than
+The bus was run as a **bracket**. It establishes what a genuinely bad road vehicle shape
+measures at on this identical pipeline, so it frames the range and stands outside the
+peer comparison. At **Cd 0.5268** it is 21% worse than
 the autorickshaw.
 
 That places the auto in the **middle** of the range. Ordering by drag
@@ -59,28 +60,29 @@ coefficient: bus 0.53 > auto 0.43 > WagonR 0.34 > Dzire 0.28.
 On **Cd·A**, the quantity that actually sets fuel burn and, per §7, roughly scales the air
 a vehicle throws, the auto is the *second lowest* of the four at 0.938, behind only the two
 cars, and **4.4× lower than the bus**. Per passenger carried the gap widens further in the
-auto's favour. Any writeup that quotes the Cd ratios without this is cherry-picking.
+auto's favour. Any writeup quoting the Cd ratios should carry this figure alongside them.
 
-### What this does NOT support
+### The limits of this result
 
-- **Not "far worse than almost any car."** The margin against a WagonR is 28% on Cd.
-  That margin is real. It does not support "far worse".
-- **Not "the worst thing on the road."** A city bus is measurably worse on Cd and vastly
-  worse on Cd·A. The auto is unexceptional.
-- **Not a small-vehicle-with-huge-drag story.** At 2.162 m² the auto's frontal area is
-  within 5–7% of both cars, measured on a 2 mm raster.
-- **n = 2 does not support "almost any random car."** A fleet of ordinary Indian vehicles
+- **The margin against a WagonR is 28% on Cd.** That margin is real, and it sits inside
+  the ordinary spread of road vehicles. "Far worse than almost any car" overstates it.
+- **A city bus is measurably worse on Cd and vastly worse on Cd·A.** The auto is
+  unexceptional, and the bus holds the upper end of the range measured here.
+- **The auto is an ordinary size.** At 2.162 m² its frontal area sits within 5 to 7% of
+  both cars, measured on a 2 mm raster, so the drag figure comes from shape.
+- **Two comparators support a claim about those two cars.** A fleet of ordinary Indian vehicles
   (Alto, Swift, i10, Nano, Bolero) is the missing piece. Free model sites skew toward
   supercars, which would bias the comparison in the wrong direction.
 
 ### Superseded run
 
 An earlier run reported **Cd 0.6083, Aref 1.618, Cd·A 0.984** for the autorickshaw.
-**Do not quote those numbers.** They came from corrupted geometry (§5). The corrected run
+**Quote the corrected run instead.** These came from corrupted geometry (§5). The corrected run
 gives Cd 0.4337, 29% lower. Two independent signs the new value is the sound one: the
 oscillation band tightened from 4.2% to 1.0%, and 0.43 falls in the range commonly quoted
-for open three-wheelers. 0.61 sits above that range. Those quoted values carry no
-citation in this repository, so they corroborate the corrected run and do not establish it.
+for open three-wheelers. 0.61 sits above that range. Those quoted values await a citation
+in this repository, so they corroborate the corrected run and leave it to stand on the
+pipeline.
 
 ---
 
@@ -93,10 +95,10 @@ citation in this repository, so they corroborate the corrected run and do not es
   reference length differ. Everything the *comparison* depends on is identical between
   vehicles by construction.
 - Both cars landed inside the range typically reported for their vehicle classes, with
-  nothing tuned toward that agreement. Those ranges live in `analysis/data/tables.py` as
-  `PUBLISHED_UNSOURCED`, carry no citation yet and are plotted nowhere, so this bullet
-  supports the result and does not validate it.
-- Comparative RANS is robust where absolute RANS is not: mesh and turbulence-model error
+  the agreement arriving untuned. Those ranges live in `analysis/data/tables.py` as
+  `PUBLISHED_UNSOURCED`, await a citation and are plotted nowhere, so this bullet
+  corroborates the result and leaves validation open.
+- Comparative RANS is robust where absolute RANS is fragile: mesh and turbulence-model error
   largely cancel when both bodies run an identical pipeline.
 
 ---
@@ -109,14 +111,14 @@ citation in this repository, so they corroborate the corrected run and do not es
 | domain | 42 × 20 × 10 m (cars, auto), 100 × 32 × 14 m (bus) |
 | blockage | ~1.2% cars/auto, 1.75% bus |
 | base cell | **0.5 m, identical in every case** |
-| surface refinement | level 4–5 |
+| surface refinement | level 4 to 5 |
 | prism layers | 3 |
 | decomposition | 6 MPI ranks |
 | iterations | 1000 |
 
 Roughly 5 min meshing + 17 min solving per car. The bus is 2.48M cells and took ~1.4 h.
 
-### Why the bus domain is bigger but the base cell is not
+### Why the bus domain is bigger at the same base cell
 
 An 11 m vehicle in the 42 m car domain would block ~4% of the cross-section and sit too
 close to the outlet. Its Cd would then read high because of confinement. **Blockage
@@ -128,11 +130,12 @@ surface resolution and break the comparison the report rests on.
 
 ### A rule this project established
 
-**Never quote the last iteration.** Steady RANS on a bluff body does not converge to a
-point. It settles into a limit cycle and oscillates indefinitely. An earlier draft quoted
+**Quote the windowed mean, always with its band.** Steady RANS on a bluff body settles
+into a limit cycle and oscillates indefinitely around it. An earlier draft quoted
 Cd 0.5982 from three adjacent lines of output and called it "converged to four significant
 figures". The true mean was 0.6083 with a 4.2% band. Report the mean over the final 200
-iterations, always with the band. More iterations do not help. Only URANS or DES would,
+iterations, always with the band. More iterations leave the oscillation in place. URANS or
+DES would resolve it,
 and that needs a cluster.
 
 ---
@@ -150,7 +153,7 @@ nose at x = 0, ground z = 0, centreline y = 0.
 ### The autorickshaw wrap destroyed the vehicle, silently
 
 The first auto wrap used a 0.06 m voxel. The autorickshaw's windscreen and canopy roof are
-**single-sheet planes with no thickness**, and the wrap erased them. No error, no warning,
+**single-sheet planes of zero thickness**, and the wrap erased them. It ran silently,
 and every check in place at the time passed.
 
 They passed because they fired **lateral** rays, which confirmed the open flanks survived.
@@ -168,7 +171,7 @@ the 0.06 m wrap gave a Cd 29% too high and four times noisier.
 
 The correct geometry already existed: `WRAP_AUTO` in collection `07_WRAP` of
 `auto_mantaflow_moving_v2.blend`, a 0.02 m wrap, 80,586 faces, windscreen matching the
-source within 1–2 cm at every height.
+source within 1 to 2 cm at every height.
 
 **The cars and the bus are unaffected.** They are chunky closed bodies with real internal
 volume. Their streamwise census is textbook, first-hit walking smoothly up bonnet → screen
@@ -184,7 +187,7 @@ wrap was taken. Streamwise first-hit against the raw source:
 | raw source | 0.40 | 0.43 | 0.51 | 0.59 | 0.64 |
 | 0.03 m wrap | 0.33 | 0.41 | 0.48 | 0.56 | 0.60 |
 
-Every height present in the source is present in the wrap, offset by 3–7 cm in one
+Every height present in the source is present in the wrap, offset by 3 to 7 cm in one
 consistent direction, the isosurface sitting slightly proud of the surface, which is what
 a correct wrap does. Boundary edges 0, non-manifold 0, islands 1. Aref 7.851 m² measured on
 a 2 mm raster. Source: 1,780 polys, 10.879 × 2.903 × 3.111 m, already at real-world scale.
@@ -194,13 +197,13 @@ because "solidify thickness must exceed the voxel size." Re-running 0.06 in a cl
 session produced 38,152 polys with the correct bounding box, which **disproves that
 explanation**. The real cause was `bpy.ops` context reuse across three successive wrap
 iterations in one script. The autorickshaw's failure remains explained by thin single-sheet
-geometry. The bus never had that defect.
+geometry. The bus came through clean.
 
 ### Geometry acceptance test (now mandatory before any run)
 
 1. Census the **raw source** first, streamwise *and* lateral. That is ground truth.
 2. Wrap, then re-run **both** censuses.
-3. Pass requires agreement, not plausibility: every height where the source has a face must
+3. Pass requires measured agreement: every height where the source has a face must
    have one in the wrap, offset consistently and by centimetres.
 4. `boundary edges = 0`, `non-manifold = 0`, `islands = 1`.
 5. Bbox against real-world dimensions. Downloaded models arrive at arbitrary scale.
@@ -209,20 +212,20 @@ geometry. The bus never had that defect.
 
 ## 6. Limitations (these belong in any writeup)
 
-- **No wheel rotation.** Wheels are static geometry. Minor for drag, major for anything
+- **Wheels are static geometry.** Minor for drag, major for anything
   about dust or spray.
-- **No underbody detail.** Voxel wrapping smooths the underbody into a shell.
-- **The autorickshaw is simulated EMPTY**, no driver and no passengers. Its most
+- **Underbody simplified.** Voxel wrapping smooths it into a shell.
+- **The autorickshaw is simulated EMPTY**, driver and passengers excluded. Its most
   aerodynamically flattering configuration.
-- **Steady RANS.** Time-averaged flow, no vortex shedding, no unsteady wake.
-- **The bus is a Japanese city bus (Nagoya/Aichi), not an Indian one.** No suitable Indian
-  bus model was available. It is a generic three-box urban transit shape and is used here
-  purely as an upper bound on road-vehicle drag, not as a claim about Indian buses. State
+- **Steady RANS.** Time-averaged flow only, so the wake is a mean structure.
+- **The bus is a Japanese city bus (Nagoya/Aichi).** An Indian bus model at this standard
+  remains to be sourced. It is a generic three-box urban transit shape and is used here
+  purely as an upper bound on road-vehicle drag, so it speaks for that vehicle alone. State
   this wherever the bus number appears.
 - **The bus mesh is coarser relative to its size.** 2.48M cells over an 11 m body is a
   lower cells-per-metre density than the cars get. Its Cd carries more uncertainty than the
-  others, and its 4.0% band reflects that. It is solid enough to bracket, not to rank
-  against the WagonR at a few percent.
+  others, and its 4.0% band reflects that. It is solid enough to bracket the range, and a
+  few-percent ranking against the WagonR would need a finer mesh.
 - Absolute Cd is approximate. **The ratios are the result.**
 
 ---
@@ -239,19 +242,19 @@ A different claim with a different receptor. Three mechanisms, easily conflated:
 | *occupants* of the auto eat more dust | open sides, no cabin | 2D slice study, ~40× at chest height |
 | the auto throws more air at a *bystander* | wake transport to the kerb at pedestrian height | **answered below** |
 
-### Correction: the wind-tunnel frame is NOT wrong for a pedestrian
+### Correction: the wind-tunnel frame is exact for a pedestrian
 
 An earlier draft of this section asserted that holding the vehicle still puts the
 pedestrian "inside a 60 km/h freestream", so only a moving-obstacle Mantaflow setup could
 address the claim. **That was wrong.** The lateral component `v_y` is **Galilean
 invariant**: shifting to the frame of the pedestrian is the exact transformation
-`u_ped = (U_x − U, U_y, U_z)`, not an approximation. A fixed-frame solve therefore answers
-a moving-vehicle roadside question exactly, and overset or moving meshes were never
-required. The history seen by the pedestrian is read as the diagonal `x = X0 + U·t` through the
-`(x, t)` plane data, so no frozen-flow assumption enters either.
+`u_ped = (U_x − U, U_y, U_z)`, exact to machine precision. A fixed-frame solve therefore
+answers a moving-vehicle roadside question exactly, and overset or moving meshes stay
+unnecessary here. The history seen by the pedestrian is read as the diagonal `x = X0 + U·t` through the
+`(x, t)` plane data, so the analysis stays free of a frozen-flow assumption.
 
 Verified with an upstream control: the ground is a slip wall (`U_x = 16.67` exactly at
-z = 0), and freestream-subtracted speed upstream of the vehicle reads 0.00–0.07 m/s. Run
+z = 0), and freestream-subtracted speed upstream of the vehicle reads 0.00 to 0.07 m/s. Run
 that control before believing any subtracted field.
 
 ### Method
@@ -260,8 +263,8 @@ that control before believing any subtracted field.
 (the standoff used by the pedestrian), 0 → 2.2 s. Metric is **time-integrated lateral gust energy**
 per height band, `E(z) = ∫ ½ρ·v_y² dt` evaluated along the diagonal walked by the
 pedestrian. The integrand is an energy density in J m⁻³ and the integration is over time, so
-E has units of **J s m⁻³**. It does not depend on choosing an instant. Two meshes were run: a baseline and a refinement
-(`refineFar` box added at x 12–27, `refineWake` extended to x = 30, **`refineNear`
+E has units of **J s m⁻³**. It covers the whole pass, so it is independent of any chosen instant. Two meshes were run: a baseline and a refinement
+(`refineFar` box added at x 12 to 27, `refineWake` extended to x = 30, **`refineNear`
 deliberately unchanged** so the near-body face band acts as a control).
 
 ### Result: the auto delivers more sideways air at every height, against *both* cars
@@ -285,24 +288,24 @@ ranking that the continuous curves show to be height-dependent.*
 | chest 1.00 m | 0.911 | 0.510 | 0.533 | 1.79× | 1.71× |
 | **face 1.60 m** | 0.594 | 0.275 | 0.264 | **2.16×** | **2.25×** |
 
-**The number to quote is 2.2× at face height.** It holds against both cars. Two vehicles differing greatly in shape, and by 20% in steady drag coefficient, land at 2.16× and 2.25×, so the result does not depend on the choice of comparator.
+**The number to quote is 2.2× at face height.** It holds against both cars. Two vehicles differing greatly in shape, and by 20% in steady drag coefficient, land at 2.16× and 2.25×, so the result holds across the choice of comparator.
 
-**The ranking of the two cars moves with height, so a best-case and worst-case framing does
-not survive.** At ankle level the low sedan scores 0.512 against 0.436 for the tall
+**The ranking of the two cars moves with height, so the continuous profile is the honest
+summary.** At ankle level the low sedan scores 0.512 against 0.436 for the tall
 hatchback, and above chest the order reverses. A low car drives a strong wake close to the
 road and leaves little air disturbed up high. Which car looks worse depends on the height
 being asked about, and that is the reason a chart at one fixed height misleads here.
 
-**Mesh status.** Face and chest moved 8–17% between the baseline and the refined mesh, so those are solid. Ankle and knee roughly doubled, which means the low-level magnitudes are still mesh-dependent and only the direction is nailed down. Refining the far wake alone moved the face ratio by 3%, exactly as the control was designed to show. The refinement also revealed that the coarse mesh had been **under**-reading the auto, diffusing away a real ground jet.
+**Mesh status.** Face and chest moved 8 to 17% between the baseline and the refined mesh, so those are solid. Ankle and knee roughly doubled, which means the low-level magnitudes are still mesh-dependent and only the direction is nailed down. Refining the far wake alone moved the face ratio by 3%, exactly as the control was designed to show. The refinement also revealed that the coarse mesh had been **under**-reading the auto, diffusing away a real ground jet.
 
-**Confound closed (2026-08-05).** `AUTOW_T2R` repeated the auto case on an identical mesh (1 024 831 cells, matched to the cell) with initial turbulent kinetic energy raised 1%. Energies reproduce to **0.0–0.3%** at every band and ratios to 0.3%, so the mesh deltas above belong to the mesh and the pipeline is reproducible end to end. One point of interpretation: URANS is close to deterministic, so treat this as a reproducibility check. It is not an error bar.
+**Confound closed (2026-08-05).** `AUTOW_T2R` repeated the auto case on an identical mesh (1 024 831 cells, matched to the cell) with initial turbulent kinetic energy raised 1%. Energies reproduce to **0.0 to 0.3%** at every band and ratios to 0.3%, so the mesh deltas above belong to the mesh and the pipeline is reproducible end to end. One point of interpretation: URANS is close to deterministic, so treat this as a reproducibility check. An error bar would need a separate study.
 
 ### The view from where you stand
 
 ![Gust field at the pedestrian](figures/fields/cfd_f4_gustview.png)
 
 *The vehicle drives past a stationary pedestrian standing 1.2 m from the kerb. The frame
-change is an exact Galilean shift of the fixed-frame solve, so no re-simulation is involved.
+change is an exact Galilean shift of the fixed-frame solve, so the existing solve supplies it.
 Bright areas are air being thrown by the vehicle, and black is still air.*
 
 Animated versions run the full pass at 9.2× slow motion with three vehicles stacked:
@@ -337,7 +340,7 @@ belongs to the drag discussion in §2.*
 | face 1.60 m | +0.040 | −0.023 | +0.024 |
 
 Mean signed vertical velocity (m/s, positive means lofting). **All three vehicles loft air at
-essentially every height.** The auto lofts 2–3× harder than either car, most strongly at knee
+essentially every height.** The auto lofts 2 to 3× harder than either car, most strongly at knee
 level. Peak sideways air at face height is 2.65 m/s for the auto against 1.81 m/s for the
 WagonR.
 
@@ -345,10 +348,10 @@ WagonR.
 > the auto against −0.133 m/s for the WagonR, and argued that the auto lifts air while a car
 > presses it down. Measured again per height band across all three vehicles, that result does
 > not reproduce, and no band yields −0.133 for the WagonR. The fault was quoting a single
-> aggregate over the 0.4–1.6 m column as though it were a per-height figure. The mechanism
+> aggregate over the 0.4 to 1.6 m column as though it were a per-height figure. The mechanism
 > survives as a difference of degree, and the per-band figures are the ones reported.
 
-### Dust: the passive-scalar argument holds, and no scalar run is needed to state it
+### Dust: the passive-scalar argument holds ahead of any scalar run
 
 Stokes numbers against a ~0.18 s vehicle timescale: 10 µm road dust has settling velocity
 0.008 m/s and St ≈ 0.005. At 20 µm St ≈ 0.02, and at 50 µm St ≈ 0.11. Only near 100 µm (St ≈ 0.45) does a
@@ -358,10 +361,10 @@ correction against the updraught behind the auto. Ballistic grit thrown by tyres
 Lagrangian problem.
 
 **What is still open:** how high one pass actually carries it. Multiplying the mean
-updraught by the wake residence gives ~0.45–0.8 m of rise, so dust entrained at 0–0.5 m
-reaches roughly 0.5–1.3 m, which is chest to chin height. That is a crude Lagrangian estimate
-from an Eulerian mean and is **not** a result. Integrating tracer trajectories through the
-time-varying field would settle it.
+updraught by the wake residence gives ~0.45 to 0.8 m of rise, so dust entrained at 0 to 0.5 m
+reaches roughly 0.5 to 1.3 m, which is chest to chin height. That is a crude Lagrangian estimate
+from an Eulerian mean and stands as an **indication**. Integrating tracer trajectories
+through the time-varying field would settle it.
 
 ### Limitations specific to this study
 
@@ -369,18 +372,19 @@ time-varying field would settle it.
   matter, tall boxy hatchback through low sedan. More vehicles would strengthen the wording
   "almost any random car". Bus geometry is ready at this standard, and Alto, Swift and i10
   are blocked on geometry preparation. Compute is available.
-- Ankle and knee ratios are **not grid-converged**. A third, finer mesh is required before
-  3.19× can be quoted. Only the direction is established.
+- Ankle and knee ratios are **mesh-sensitive**. A third, finer mesh is required before
+  3.19× can be quoted. The direction alone is established.
 - ~~The refined and baseline runs are different realisations~~ **Closed 2026-08-05** by
-  `AUTOW_T2R`, the repeat with a perturbed initial condition. Deltas reproduce to 0.0–0.3%,
+  `AUTOW_T2R`, the repeat with a perturbed initial condition. Deltas reproduce to 0.0 to 0.3%,
   see §7. A narrower caveat replaces it: URANS is close to deterministic, so this control
-  cannot be read as an uncertainty band on the physics.
+  measures reproducibility of the pipeline. An uncertainty band on the physics needs its
+  own study.
 - The band tables average over ±0.25 m, so the "ankle 0.20 m" row really covers 0 to 0.45 m
   and overlaps the knee row. That is why the tables put the peak for the auto at knee height.
   The continuous profile puts it at shin height. **Trust the profile for shape.**
-  Ratios are unaffected either way.
-- Wheels do not rotate, so dust *entrainment* falls outside the model. Only redistribution
-  of air is captured.
+  Ratios hold either way.
+- Wheels are static, so dust *entrainment* falls outside the model. Redistribution of air
+  is what the model captures.
 
 ---
 
@@ -397,7 +401,7 @@ differences between the three small vehicles stop looking like the whole story.
 **Strong, and directly tied to a claim:**
 
 1. **Surface pressure map, all four vehicles, one colour scale.** The auto's flat front panel
-   should show a large high-pressure region the Dzire's raked nose does not. This is *the*
+   should show a large high-pressure region that the Dzire's raked nose lacks. This is *the*
    picture of why one Cd is bigger.
 2. **Wake volume comparison**, isosurface of total pressure ≈ 0, which encloses the
    separated wake. All three at one scale makes "the auto drags a bigger hole behind it"
@@ -405,13 +409,13 @@ differences between the three small vehicles stop looking like the whole story.
 3. **Cd convergence traces with the ±band shaded**, all vehicles on one axis. Honest about
    the limit-cycle behaviour, and pre-empts the obvious reviewer question.
 4. **Frontal-area silhouettes at true relative scale**, annotated with Aref. Kills the
-   intuition that the auto is tiny. At 2.162 m² it is within 5–7% of both cars, and this
+   intuition that the auto is tiny. At 2.162 m² it is within 5 to 7% of both cars, and this
    report now says so.
 
 **Strong, and specific to the dust claim:**
 
 5. **Streamlines seeded at road level (z = 0.05 m), coloured by final height.** For the
-   auto, expect lines entering the open body and exiting sideways at 1–1.7 m. For the car they are
+   auto, expect lines entering the open body and exiting sideways at 1 to 1.7 m. For the car they are
    swept over the roof. The single most persuasive image available for the pedestrian claim.
 6. **Vertical plane at y = 2.0 m**, the pedestrian's plane, showing turbulent kinetic
    energy, with eye height marked at 1.6 m.
@@ -419,30 +423,30 @@ differences between the three small vehicles stop looking like the whole story.
 **Cool, and cheap:**
 
 7. **Cd·A drawn as literal rectangles** beside the vehicle silhouettes. Cd·A is the quantity
-   that actually sets fuel burn, and it is almost never shown as the area it physically is.
+   that actually sets fuel burn, and it is rarely shown as the area it physically is.
 8. **The geometry-failure figure**, broken 0.06 m wrap beside the corrected 0.02 m wrap,
    ray census overlaid. Reviewers trust a study that shows its own caught error.
 9. **Q-criterion vorticity iso-surfaces**, spectacular. Caption honestly: with steady RANS
-   these are time-averaged structures. They are not instantaneous vortices.
+   these are time-averaged structures, so read them as mean flow.
 
-**Do not attempt from the STEADY (drag) data:**
+**Reserve these for the transient data:**
 
-- Any *animated* wake or shedding sequence. Those solutions are steady. Animating one
-  would fabricate unsteadiness that was never computed.
+- Any *animated* wake or shedding sequence. Those solutions are steady, so an animation
+  would fabricate unsteadiness the solve leaves out.
 
 **The transient pedestrian cases (§7) lift that restriction, for those cases only.**
 They are genuinely time-resolved, so animation shows computed unsteadiness. Delivered:
 
 - `report/cfd_f4_gustview.png` and `.mp4`, side view at the pedestrian's plane, both
-  vehicles, full 0–2.2 s pass in the pedestrian's frame.
+  vehicles, full 0 to 2.2 s pass in the pedestrian's frame.
 - `report/cfd_f5_topview_z{0p20,1p00,1p60}.png`, plan view at three heights. These are a
-  **strip** and not a film: the sampler wrote only the vertical plane, so plan views come from volume
-  writes stored every 0.5 s. Three instants cannot be interpolated to 30 fps without
-  drawing motion the solve never resolved.
+  **strip**: the sampler wrote only the vertical plane, so plan views come from volume
+  writes stored every 0.5 s. Interpolating three instants to 30 fps would draw motion the
+  solve leaves unresolved.
 
 Two rules the figure work established, both learned the expensive way:
 
-- **The view must be able to show the finding.** A plan view at one height cannot display
+- **The view must be able to show the finding.** Displaying a vertical redistribution result needs a view that carries height, and a plan view at one height flattens
   a result about height. That is what made the first `cfd_f4_planview.png` useless.
 - **The plotted quantity must match the claim.** Colouring the plan view by total
   `|u − U∞|` made the WagonR look far worse, because in plan that is dominated by the

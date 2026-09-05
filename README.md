@@ -3,16 +3,16 @@
 ![Road dust behind an autorickshaw and a WagonR](docs/media/dust_comparison.gif)
 
 Two vehicles, one dust supply, identical domain and mesh. The autorickshaw carries road air to
-waist height and the hatchback holds it at the ankles, a factor of 23 at 1.0 m. Neither reaches
-the face. Full resolution in [docs/media/](docs/media/).
+waist height and the hatchback holds it at the ankles, a factor of 23 at 1.0 m. Both stay below
+face height. Full resolution in [docs/media/](docs/media/).
 
-This study measures the air and road dust a passing vehicle delivers to a person standing at the
+This study estimates the air and road dust a passing vehicle delivers to a person standing at the
 kerb. Four road vehicles were run through one identical CFD pipeline, from geometry preparation
 and a documented acceptance test, through steady and transient solves, to figures that regenerate
 from committed data. The workflow was built end to end: Blender for geometry repair and voxel
 wrapping, OpenFOAM for the solve, and Python for analysis and figure generation.
 
-The autorickshaw measures a drag coefficient of 0.434 against 0.338 for a tall hatchback, and
+The autorickshaw simulates at a drag coefficient of 0.434 against 0.338 for a tall hatchback, and
 delivers 2.16x the lateral gust energy of that car in the band spanning eye level and 23x the
 road-dust concentration at waist height. Dust reaches 1.25 m above the road. The principal
 limitation is that wheels are static geometry, so the model covers redistribution of air and
@@ -23,7 +23,7 @@ leaves dust entrainment to a separate treatment.
 Two claims are examined, and they require different instruments.
 
 1. **Drag.** How does an autorickshaw compare with ordinary Indian cars, measured as a drag
-   coefficient on an identical pipeline?
+   coefficient computed on an identical pipeline?
 2. **Pedestrian exposure.** How much sideways air and road dust reaches a bystander, measured
    along the path that person walks?
 
@@ -41,13 +41,13 @@ retained here because the reason for discontinuing it defines the test now appli
 Dashed lines carry a procedural relationship and solid lines carry data. Every case derives from
 the validated motorBike tutorial, with only geometry and reference quantities changed.
 
-## 3. Validation
+## 3. Verification
 
 ![Pipeline validation](docs/figures/fig02_validation.png)
 
-FIGURE 2: Validation of the pipeline. (a) The OpenFOAM motorBike tutorial reproduced at Cd 0.4159
+FIGURE 2: Verification of the pipeline. (a) The OpenFOAM motorBike tutorial reproduced at Cd 0.4159
 and Cl 0.0722. Filled and open markers are a Ryzen 5 3600 and a Ryzen 5 5600X, which agree to the
-last written digit. (b) Measured Cd for the two cars against published ranges for their vehicle
+last written digit. (b) Computed Cd for the two cars against published ranges for their vehicle
 class. Points are the mean over the final 200 iterations. Indicative class ranges appear in
 `analysis/data/tables.py` as `PUBLISHED_UNSOURCED` and stay in the data module until a primary
 source is traced for them.
@@ -56,6 +56,11 @@ The install reproduces the reference tutorial, and the same case reproduces iden
 machines tested. This shows the numerics are the reference ones and that the result is stable
 across those two configurations. Machine independence in general would need a wider set of
 configurations.
+
+This is verification, meaning the solver and the case setup behave as the reference implementation
+does. Validation in the strict sense compares computed forces against wind-tunnel measurements of
+these four bodies, and that comparison stays open. The ratios are the reported result for the same
+reason, and absolute Cd is approximate.
 
 Running both bodies through an identical pipeline is the rationale for reporting ratios: mesh and
 turbulence-model error are expected to act in the same direction on both, so a ratio is less
@@ -98,7 +103,7 @@ FIGURE 5: Frontal area and drag area. (a) Frontal area A in grey beside Cd.A in 
 (b) The same Cd.A values drawn as squares at true relative area, which is the quantity that sets
 fuel burn and roughly scales the volume of air a vehicle displaces.
 
-The autorickshaw measures 1.28x the drag coefficient of the tall hatchback and 1.54x that of the
+The autorickshaw simulates at 1.28x the drag coefficient of the tall hatchback and 1.54x that of the
 subcompact sedan, at a frontal area within 7% of both. Ordering the four by Cd places it third of
 four: bus 0.527, autorickshaw 0.434, WagonR 0.338, Dzire 0.281. On Cd.A it is second lowest of the
 four and 4.4x below the bus. This result describes a moderate difference within the ordinary range

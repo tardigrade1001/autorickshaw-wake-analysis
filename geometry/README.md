@@ -16,11 +16,11 @@ from the Sketchfab API on 2026-09-05, and the derivatives are redistributed here
 terms with attribution to their authors.
 
 The bus surface stays outside the repository. Its source model is CC Attribution-NonCommercial,
-and a NonCommercial derivative cannot be released under the CC BY 4.0 that covers the rest of this
-material. Shipping it would carry a non-commercial restriction into an otherwise permissive
-repository. The bus contributes measured numbers to the report and no geometry to any figure, so
-nothing here depends on redistributing it. Any closed vehicle surface at real-world scale
-substitutes for it, and the pipeline is agnostic to the source.
+and CC BY 4.0 covers the rest of this material, so a NonCommercial derivative needs terms of its
+own. Shipping it would carry a non-commercial restriction into an otherwise permissive
+repository. The bus contributes measured numbers to the report, and every figure here builds from
+the three included surfaces. Any closed vehicle surface at real-world scale substitutes for it,
+and the pipeline is agnostic to the source.
 
 The three included files are byte-identical to the surfaces the reported runs used, checked by MD5
 against `constant/triSurface/vehicle.stl` in each solved case.
