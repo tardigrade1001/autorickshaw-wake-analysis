@@ -260,7 +260,8 @@ that control before believing any subtracted field.
 `pimpleFoam`, transient URANS, k-ω SST, 60 km/h, vertical sampling plane at y = 1.2 m
 (the standoff used by the pedestrian), 0 → 2.2 s. Metric is **time-integrated lateral gust energy**
 per height band, `E(z) = ∫ ½ρ·v_y² dt` evaluated along the diagonal walked by the
-pedestrian. It does not depend on choosing an instant. Two meshes were run: a baseline and a refinement
+pedestrian. The integrand is an energy density in J m⁻³ and the integration is over time, so
+E has units of **J s m⁻³**. It does not depend on choosing an instant. Two meshes were run: a baseline and a refinement
 (`refineFar` box added at x 12–27, `refineWake` extended to x = 30, **`refineNear`
 deliberately unchanged** so the near-body face band acts as a control).
 

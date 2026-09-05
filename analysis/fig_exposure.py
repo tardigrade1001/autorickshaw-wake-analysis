@@ -35,7 +35,7 @@ def fig_gust_height():
     for v, k in ((a, "auto"), (w, "wagonr"), (d, "dzire")):
         ax.plot(v, z, color=ts.C[k], label=ts.LABEL[k],
                 **ts.marks(markerfacecolor=ts.C[k]))
-    ax.set_xlabel("lateral gust energy (J m$^{-3}$)")
+    ax.set_xlabel("time-integrated lateral gust energy (J s m$^{-3}$)")
     ax.set_ylabel("height above road (m)")
     ax.set_ylim(0, 1.8)
     ax.legend(loc="upper right")

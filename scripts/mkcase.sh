@@ -14,6 +14,17 @@
 # Also source BEFORE `set -e`: its bashrc trips a bash "pop_var_context" error
 # under errexit, which aborts the script before it does anything.
 LABEL=$1; AREF=$2; LREF=$3
+if [ $# -lt 3 ]; then
+    echo "usage: mkcase.sh <LABEL> <Aref m2> <Lref m>" >&2
+    exit 1
+fi
+# LABEL becomes a directory name and the target of an rm -rf, so constrain it to
+# characters that cannot expand, traverse or resolve to something else.
+case "$LABEL" in
+    *[!A-Za-z0-9_-]*|"")
+        echo "LABEL must be non-empty and match [A-Za-z0-9_-]+ : '$LABEL'" >&2
+        exit 1 ;;
+esac
 set --
 . /usr/lib/openfoam/openfoam2512/etc/bashrc
 set -e
@@ -29,11 +40,24 @@ if [ ! -f "$STL" ]; then
     echo "See geometry/README.md for how to supply a surface for ${LABEL}." >&2
     exit 1
 fi
-C=~/aero/${LABEL}
+C="$HOME/aero/${LABEL}"
 
-rm -rf $C
-cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/motorBike $C
-cd $C
+# Rebuilding a case discards whatever is already there. An existing case is
+# preserved unless MKCASE_FORCE=1 says otherwise, because a rerun with a
+# recycled label would otherwise silently destroy a finished run.
+if [ -e "$C" ]; then
+    if [ "${MKCASE_FORCE:-0}" = "1" ]; then
+        echo "MKCASE_FORCE=1, replacing existing case $C" >&2
+        rm -rf -- "$C"
+    else
+        echo "case already exists: $C" >&2
+        echo "Move it aside, or rerun with MKCASE_FORCE=1 to replace it." >&2
+        exit 1
+    fi
+fi
+mkdir -p -- "$(dirname -- "$C")"
+cp -r "$FOAM_TUTORIALS/incompressible/simpleFoam/motorBike" "$C"
+cd "$C"
 rm -rf 0 constant/triSurface postProcessing log.* processor*
 
 # the tutorial names its body patch "motorBike" throughout 0.orig and system/
