@@ -2,7 +2,7 @@
 # Build an external-aero case for one vehicle.
 #   mkcase.sh <LABEL> <Aref m2> <Lref m>
 #
-# Derived from the motorBike tutorial rather than written from scratch: its
+# Derived from the motorBike tutorial. Its
 # fvSchemes / fvSolution / forceCoeffs / snappy controls are a validated
 # simpleFoam + k-omega SST external-aero setup, and the install was checked
 # against it (Cd 0.4159). Only the things that MUST differ are changed --

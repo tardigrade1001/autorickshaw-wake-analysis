@@ -1,7 +1,7 @@
 #!/bin/bash
 # Report each vehicle the SAME way: mean over the final 200 iterations, with
 # the band. A single last-line value is not a measurement on a bluff body --
-# steady RANS limit-cycles around the answer instead of settling on it.
+# steady RANS limit-cycles around the answer and never settles on it.
 printf "%-8s %8s %8s %8s %8s %9s %9s\n" VEHICLE Cd band% Aref CdA cells iters
 for L in AUTO DZIRE WAGONR; do
   F=~/aero/$L/postProcessing/forceCoeffs1/0/coefficient.dat

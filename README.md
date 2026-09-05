@@ -289,8 +289,30 @@ python fig_drag.py        # figures 3, 4, 5
 python fig_exposure.py    # figures 6 to 11
 ```
 
-`analysis/extract_diagonal.py` rebuilds `data/diagonal_profiles.npz` from the raw sampled planes,
-and is the only script requiring the full field data.
+`analysis/extract_diagonal.py` rebuilds `data/diagonal_profiles.npz` from the raw sampled planes.
+It and the two animation scripts are the only code that touches the full field data.
+
+The sampled surfaces run to tens of gigabytes and stay outside the repository. Every script that
+reads them resolves its location through `analysis/paths.py`, which takes three environment
+variables and records the local default for each:
+
+```bash
+python analysis/paths.py          # prints what resolves where, and what is present
+export VEHICLE_AERO_FIELDS=/path/to/cfd      # parent of the case directories
+export VEHICLE_AERO_OUT=/path/to/output      # where animations are written
+export VEHICLE_AERO_GEOMETRY=/path/to/stl    # comparator surfaces, see geometry/README.md
+```
+
+A missing input names the path it wanted and the variable that changes it. The animations take an
+optional third argument that caps the snapshot count, which runs the whole pipeline in seconds and
+writes beside the finished file:
+
+```bash
+python analysis/dustvid.py wide 30 8      # smoke test, 8 frames
+python analysis/dustcmp.py wide 30        # full side-by-side comparison
+```
+
+Values annotated on a capped run come from the subsample and differ from the published numbers.
 
 ## 11. Data and code availability
 

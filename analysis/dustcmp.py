@@ -36,14 +36,13 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 import imageio_ffmpeg
 from gustdraw import stl_profile, person, Resampler
+import paths
 
-OUT = r"D:\Blender\Blender Files\Auto tests\report"
+OUT = paths.out_dir()
 
 CASES = [
-    ("autorickshaw", r"D:\Blender\Blender Files\Auto tests\cfd\pedPlanesD\pedPlanes",
-     r"C:\Temp\auto.stl"),
-    ("WagonR", r"D:\Blender\Blender Files\Auto tests\cfd\wagonrD\postProcessing\pedPlanes",
-     r"C:\Temp\WAGONR.stl"),
+    ("autorickshaw", paths.field_case("D"), paths.geometry(paths.CASE_STL["D"])),
+    ("WagonR", paths.field_case("W"), paths.geometry(paths.CASE_STL["W"])),
 ]
 
 U = 16.67
@@ -57,6 +56,14 @@ CMAP = LinearSegmentedColormap.from_list("dust", [
 
 LAYOUT = sys.argv[1] if len(sys.argv) > 1 else "wide"
 FPS = int(sys.argv[2]) if len(sys.argv) > 2 else 30
+# Third argument caps the snapshots loaded per case, evenly spread across the
+# full tau range, so the whole pipeline can be smoke-tested in seconds:
+#     python dustcmp.py wide 30 12
+# Pairing is by nearest tau, so a capped run still shows matched wake ages.
+# Annotated values on a capped run come from the subsample and differ
+# from the published numbers. Use it to check the pipeline, not to read
+# a result.
+MAXFRAMES = int(sys.argv[3]) if len(sys.argv) > 3 else 0
 if LAYOUT not in ("wide", "tall"):
     sys.exit("layout must be wide or tall")
 
@@ -83,7 +90,11 @@ def snapshots(root):
         if tau < 0 or U * tau > 64.0:
             continue
         out.append((tau, d))
-    return sorted(out)
+    out.sort()
+    if MAXFRAMES and len(out) > MAXFRAMES:
+        idx = np.linspace(0, len(out) - 1, MAXFRAMES).round().astype(int)
+        out = [out[i] for i in idx]
+    return out
 
 
 def main():
@@ -225,7 +236,10 @@ def main():
     btop = f1.y0 - (0.085 if LAYOUT == "wide" else 0.075)
     axb.set_position([bp.x0, bp.y0, bp.width, max(0.10, btop - bp.y0)])
 
-    path = os.path.join(OUT, f"cfd_f10_dustcmp_{LAYOUT}_master.mp4")
+    # A capped run writes beside the master so a smoke test never
+    # replaces the finished animation.
+    tag = "_smoke%d" % MAXFRAMES if MAXFRAMES else "_master"
+    path = os.path.join(OUT, f"cfd_f10_dustcmp_{LAYOUT}{tag}.mp4")
     w, h = int(FIGSIZE[0] * DPI), int(FIGSIZE[1] * DPI)
     w -= w % 2; h -= h % 2
     wr = imageio_ffmpeg.write_frames(path, (w, h), fps=FPS, quality=8,

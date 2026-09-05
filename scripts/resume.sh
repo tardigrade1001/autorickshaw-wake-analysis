@@ -42,8 +42,8 @@ foamDictionary system/controlDict -entry endTime -set 1000
 # fields, and zero iterations of force history
 foamDictionary system/controlDict -entry writeInterval -set 100
 
-# runApplication/runParallel refuse to rerun while a log exists; move it aside
-# rather than delete, so a failed attempt stays inspectable
+# runApplication/runParallel refuse to rerun once a log exists. Move it aside and
+# keep it, so a failed attempt stays inspectable
 [ -f log.simpleFoam ] && mv log.simpleFoam log.simpleFoam.$(date +%s)
 runParallel -decomposeParDict system/decomposeParDict.6 $(getApplication)
 echo "RUN| $LABEL solver finished"

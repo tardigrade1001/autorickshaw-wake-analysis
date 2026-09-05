@@ -22,23 +22,22 @@ Two jobs, in this order:
              age into the quantity he actually described.
 """
 
-import os, glob, math
+import os, sys, glob, math
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
+import paths
 
-CASES = {
-    # F: diffusive wall source -- tracer was a NULL, kept for the velocity result
-    "F": r"D:\Blender\Blender Files\Auto tests\cfd\pedPlanes",
-    # D: advected inlet layer (s=1 below 0.3 m) + setFields seeding -- the fix
-    "D": r"D:\Blender\Blender Files\Auto tests\cfd\pedPlanesD\pedPlanes",
-    # W: WagonR, same dust supply / domain / refinement / schemes as D.
-    #    Only the vehicle STL and the 4 forceCoeffs constants differ.
-    "W": r"D:\Blender\Blender Files\Auto tests\cfd\wagonrD\postProcessing\pedPlanes",
-    # R: autorickshaw again, dust supply RAISED to 0.5-1.0 m. Same 0.5 m slab
-    #    thickness D really supplied (the coarse cell at z=0.25 fills 0-0.5 m),
-    #    lifted exactly 0.5 m. Single-variable test of source height.
-    "R": r"D:\Blender\Blender Files\Auto tests\cfd\autowR\postProcessing\pedPlanes",
-}
-ROOT = CASES["D"]
+# The four transient cases. Directories resolve through paths.py, which reads
+# VEHICLE_AERO_FIELDS; the sampled surfaces are too large to ship.
+#   F  diffusive wall source -- tracer was a NULL, kept for the velocity result
+#   D  advected inlet layer (s=1 below 0.3 m) + setFields seeding -- the fix
+#   W  WagonR, same dust supply / domain / refinement / schemes as D. Only the
+#      vehicle STL and the 4 forceCoeffs constants differ.
+#   R  autorickshaw again, dust supply RAISED to 0.5-1.0 m. Same 0.5 m slab
+#      thickness D really supplied (the coarse cell at z=0.25 fills 0-0.5 m),
+#      lifted exactly 0.5 m. Single-variable test of source height.
+CASES = dict(paths.CASE_DIR)
+ROOT = paths.field_case("D")
 U = 16.67                 # 60 km/h inlet, matches 0.orig/U
 X0 = -12.0                # inlet plane = pedestrian start
 T_PASS = -X0 / U          # 0.720 s, pedestrian abreast of the vehicle
@@ -47,9 +46,9 @@ _cache = {}
 
 
 def use(case):
-    """Switch case ('F', 'D' or 'W'). Clears the cache -- it is keyed by time only."""
+    """Switch case ('F', 'D', 'W' or 'R'). Clears the cache -- it is keyed by time only."""
     global ROOT
-    ROOT = CASES[case]
+    ROOT = paths.field_case(case)
     _cache.clear()
     return ROOT
 
