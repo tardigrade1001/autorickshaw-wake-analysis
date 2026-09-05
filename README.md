@@ -47,10 +47,8 @@ the validated motorBike tutorial, with only geometry and reference quantities ch
 
 FIGURE 2: Verification of the pipeline. (a) The OpenFOAM motorBike tutorial reproduced at Cd 0.4159
 and Cl 0.0722. Filled and open markers are a Ryzen 5 3600 and a Ryzen 5 5600X, which agree to the
-last written digit. (b) Computed Cd for the two cars against published ranges for the vehicle
-class. Points are the mean over the final 200 iterations. Indicative class ranges appear in
-`analysis/data/tables.py` as `PUBLISHED_UNSOURCED` and stay in the data module until a primary
-source is traced for them.
+last written digit. (b) Computed Cd for the two cars. Points are the mean over the final 200
+iterations.
 
 The install reproduces the reference tutorial, and the same case reproduces identically on the two
 machines tested. This shows the numerics are the reference ones and that the result is stable
@@ -58,7 +56,13 @@ across those two configurations. Machine independence in general would need a wi
 configurations.
 
 This is verification, meaning the solver and the case setup behave as the reference implementation
-does. Validation in the strict sense compares computed forces against wind-tunnel measurements of
+does. A car-shaped case would extend it. The DrivAer body (Heft, Indinger and Adams, SAE Technical
+Paper 2012-01-0168) is the standard open reference geometry for road-vehicle aerodynamics, with
+published wind-tunnel forces and three interchangeable rear ends, and running it through this
+pipeline is the route to a measured comparison for a car.
+
+Vehicle-class drag ranges are absent here on purpose. Every figure reachable online for these
+classes traces back to a secondary compilation, so quoting one would look like a reference and rest on hearsay. Validation in the strict sense compares computed forces against wind-tunnel measurements of
 these four bodies, and that comparison stays open. The ratios are the reported result for the same
 reason, and absolute Cd is approximate.
 

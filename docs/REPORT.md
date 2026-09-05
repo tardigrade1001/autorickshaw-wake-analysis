@@ -94,10 +94,12 @@ pipeline.
 - Every case derives from that validated tutorial. Only geometry, reference area and
   reference length differ. Everything the *comparison* depends on is identical between
   vehicles by construction.
-- Both cars landed inside the range typically reported for the vehicle class, with
-  the agreement arriving untuned. Those ranges live in `analysis/data/tables.py` as
-  `PUBLISHED_UNSOURCED`, await a citation and are plotted nowhere, so this bullet
-  corroborates the result and leaves validation open.
+- The `motorBike` tutorial verifies the numerics against a reference implementation.
+  A measured car would extend that, and the DrivAer body (Heft, Indinger and Adams,
+  SAE Technical Paper 2012-01-0168) is the standard open geometry with published
+  wind-tunnel forces for exactly that purpose. Vehicle-class drag ranges are absent
+  from this repository, since every figure reachable online for these classes traces
+  back to a secondary compilation.
 - Comparative RANS is robust where absolute RANS is fragile: mesh and turbulence-model error
   largely cancel when both bodies run an identical pipeline.
 

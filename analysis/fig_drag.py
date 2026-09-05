@@ -71,24 +71,16 @@ def fig_drag_summary():
         ax.errorbar(i, m, yerr=half, color=ts.C[k], capsize=4, elinewidth=1.4,
                     **ts.marks(markerfacecolor=ts.C[k], markersize=9, ls="none"))
         ax.text(i + 0.14, m, f"{m:.3f}", va="center", fontsize=10, color=ts.C[k])
-        if k in T.PUBLISHED:
-            lo, hi = T.PUBLISHED[k]
-            ax.add_patch(Rectangle((i - 0.30, lo), 0.60, hi - lo,
-                                   facecolor="#D9D9D9", edgecolor="none", zorder=0))
     w = T.WITHDRAWN_AUTO
     ia = ORDER.index("auto")
     ax.errorbar(ia, w["cd"], yerr=0.5 * w["band"] * w["cd"], color="#B0B0B0",
                 capsize=4, elinewidth=1.2,
                 **ts.marks(markerfacecolor="white", markeredgecolor="#B0B0B0",
                            markersize=8, ls="none"))
-    ax.annotate("withdrawn\n(corrupted geometry)", xy=(ia, w["cd"]),
+    ax.annotate("superseded\n(0.06 m wrap)", xy=(ia, w["cd"]),
                 xytext=(ia - 0.75, 0.72), fontsize=9, color="#7A7A7A",
                 ha="center",
                 arrowprops=dict(arrowstyle="-", color="#B0B0B0", lw=0.9))
-    ax.add_patch(Rectangle((-0.45, 0.175), 0.28, 0.028, facecolor="#D9D9D9",
-                           edgecolor="none"))
-    ax.text(-0.10, 0.189, "published range for the class", va="center",
-            fontsize=9.5, color="#5A5A5A")
     ax.set_xticks(range(len(ORDER)))
     ax.set_xticklabels([ts.LABEL[k].replace(" ", "\n") for k in ORDER])
     ax.set_ylabel(r"$C_d$"); ax.set_ylim(0.15, 0.80); ax.set_xlim(-0.6, 3.6)

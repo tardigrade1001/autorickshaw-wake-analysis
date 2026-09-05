@@ -5,16 +5,22 @@ rebuilds an OpenFOAM case from the committed geometry, and runs both animation s
 
 ## Open
 
-- [ ] **Source the vehicle-class drag ranges.** `analysis/data/tables.py` holds them as
-      `PUBLISHED_UNSOURCED` and nothing is plotted from them. A web search reaches only
-      secondary compilations, so this needs the book: Hucho, *Aerodynamics of Road Vehicles*.
-      Restore the band in Figure 2b and Figure 4 once a citation exists. Section 3 of
-      `docs/REPORT.md` now states plainly that the ranges carry no citation, so the report is
-      accurate as it stands and the citation upgrades it.
-- [ ] **Push.** Name and visibility are settled: `autorickshaw-wake-analysis`, public. The
-      repository is ready and the working tree is clean.
-      `gh repo create autorickshaw-wake-analysis --public --source=. --remote=origin --push`
+Empty. Both release items are closed, listed below.
 
+## Closed in this pass (2026-09-05)
+
+- [x] **Published (2026-09-05).** Live at
+      https://github.com/tardigrade1001/autorickshaw-wake-analysis, public, branch `main`,
+      with the description and topics set.
+- [x] **Vehicle-class drag ranges resolved by removing them.** Every figure
+      reachable online for these classes traces back to a secondary compilation, so a range
+      here would look like a reference and rest on hearsay. `PUBLISHED_UNSOURCED` is gone from
+      `analysis/data/tables.py`, the dead band-drawing code is gone from `fig_drag.py` and
+      `fig_method.py`, and Figure 4 has lost a legend swatch that advertised bands the figure
+      never drew. Section 3 of the README and the report now name the DrivAer body
+      (Heft, Indinger and Adams, SAE Technical Paper 2012-01-0168) as the standard open
+      geometry for a car-shaped verification case, which is the sound way to get a measured
+      comparison.
 ## Done in this pass (2026-09-05)
 
 - [x] The bus model traced: Japanese bus "Nagoya City Bus" (Aichi) by VRC-IW, **CC

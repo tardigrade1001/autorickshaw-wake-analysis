@@ -115,12 +115,6 @@ def fig_validation():
 
     order = ["dzire", "wagonr"]
     for i, k in enumerate(order):
-        # An indicative class range is drawn only when a citable source exists.
-        # T.PUBLISHED is empty until then; see analysis/data/tables.py.
-        if k in T.PUBLISHED:
-            lo, hi = T.PUBLISHED[k]
-            axb.add_patch(Rectangle((i - 0.26, lo), 0.52, hi - lo,
-                                    facecolor=ts.PALE, edgecolor="none", zorder=0))
         axb.plot(i, T.DRAG[k]["cd"], color=ts.C[k],
                  **ts.marks(markerfacecolor=ts.C[k], markersize=10, ls="none"))
         axb.text(i + 0.16, T.DRAG[k]["cd"], f"{T.DRAG[k]['cd']:.3f}",
@@ -129,11 +123,6 @@ def fig_validation():
     axb.set_xticklabels(["Maruti Dzire\n(subcompact sedan)",
                          "Maruti WagonR\n(tall hatchback)"])
     axb.set_ylabel("$C_d$"); axb.set_ylim(0.24, 0.40); axb.set_xlim(-0.6, 1.6)
-    if T.PUBLISHED:
-        axb.add_patch(Rectangle((0.85, 0.252), 0.16, 0.010, facecolor=ts.PALE,
-                                edgecolor="none"))
-        axb.text(1.05, 0.257, "published range for the class", va="center",
-                 fontsize=9.5, color=ts.GREY)
     ts.panel(axb, "b", dx=-0.14)
     fig.subplots_adjust(wspace=0.34)
     ts.save(fig, os.path.join(OUT, "fig02_validation.png"))
