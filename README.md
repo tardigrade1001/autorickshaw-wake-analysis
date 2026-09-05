@@ -14,10 +14,9 @@ wrapping, OpenFOAM for the solve, and Python for analysis and figure generation.
 
 The autorickshaw measures a drag coefficient of 0.434 against 0.338 for a tall hatchback, and
 delivers 2.16x the lateral gust energy of that car in the band spanning eye level and 23x the
-road-dust
-concentration at waist height. Dust reaches 1.25 m above the road. The principal limitation is
-that wheels are static geometry, so the model describes redistribution of air and does not address
-dust entrainment.
+road-dust concentration at waist height. Dust reaches 1.25 m above the road. The principal
+limitation is that wheels are static geometry, so the model describes redistribution of air and
+does not address dust entrainment.
 
 ## 1. Questions tested
 
@@ -77,10 +76,10 @@ the fixed mapping used throughout: red autorickshaw, blue WagonR, grey Dzire, bl
 
 FIGURE 4: Drag coefficient by vehicle. Points are the mean over the final 200 iterations and error
 bars span the oscillation band across that window, which is 1.0% for the autorickshaw and WagonR
-and about 4% for the Dzire and bus. The open
-grey marker is a superseded autorickshaw result of 0.608 produced by a 0.06 m wrap that had erased
-the windscreen, retained because the correction is part of the method. The corrected geometry gives
-0.434, with the band tightening from 4.2% to 1.0%.
+and about 4% for the Dzire and bus. The open grey marker is a superseded autorickshaw result of
+0.608 produced by a 0.06 m wrap that had erased the windscreen, retained because the correction is
+part of the method. The corrected geometry gives 0.434, with the band tightening from 4.2% to
+1.0%.
 
 | vehicle | Cd | band | A_ref (m2) | Cd.A | cells |
 |---|---|---|---|---|---|
@@ -132,13 +131,14 @@ Sampling is by band: each plotted height is the centre of a 0.5 m band, so the t
 from docs/REPORT.md section 7.
 
 In the band centred at 1.60 m, which spans eye level, the autorickshaw delivers 2.16x the lateral
-gust energy of the WagonR and 2.25x that of the Dzire. Two comparators differing greatly in shape land within 4% of each other, so the
-result describes the autorickshaw and holds under the choice of comparator. The ranking of the two
-cars moves with height, so a single fixed height imposes an ordering that the continuous curves
-show to be height-dependent. Read the profile for shape. Face and chest energies moved 8 to 17%
-between the baseline and refined meshes, and ankle and knee energies roughly doubled. Two meshes
-give a sensitivity result. Grid convergence needs a third, finer mesh and was not run, so the
-low-level magnitudes stay mesh-dependent and the analysis establishes their direction only.
+gust energy of the WagonR and 2.25x that of the Dzire. Two comparators differing greatly in shape
+land within 4% of each other, so the result describes the autorickshaw and holds under the choice
+of comparator. The ranking of the two cars moves with height, so a single fixed height imposes an
+ordering that the continuous curves show to be height-dependent. Read the profile for shape. Face
+and chest energies moved 8 to 17% between the baseline and refined meshes, and ankle and knee
+energies roughly doubled. Two meshes give a sensitivity result. Grid convergence needs a third,
+finer mesh and was not run, so the low-level magnitudes stay mesh-dependent and the analysis
+establishes their direction only.
 
 ![Vertical transport by height](docs/figures/fig07_vertical_transport.png)
 
@@ -192,9 +192,8 @@ the column in both cases, distributed higher and more variably behind the autori
 consistent with vertical redistribution as the mechanism. A spurious source in the autorickshaw
 case would add tracer to its column, and the two integrals agree to within 14%, so the data gives
 that explanation no support. Excluding one outright would need a mass budget on the scalar, which
-was not run.
-Section 7 of the report quotes 0.472 m and 0.431 m for this comparison, computed on a coarser
-height grid, and both versions support the same conclusion.
+was not run. Section 7 of the report quotes 0.472 m and 0.431 m for this comparison, computed on a
+coarser height grid, and both versions support the same conclusion.
 
 ![Source-height experiment](docs/figures/fig11_source_height.png)
 
@@ -226,7 +225,7 @@ motion the solve never computed.
 - [`docs/media/cfd_f10_dustcmp_wide.mp4`](docs/media/cfd_f10_dustcmp_wide.mp4) places the
   autorickshaw and the WagonR on one shared colour scale.
 
-Both animations above are also embedded in this README as looping GIFs, at
+Two of these are also embedded in this README as looping GIFs, at
 [`docs/media/dust_comparison.gif`](docs/media/dust_comparison.gif) and
 [`docs/media/gust_pass.gif`](docs/media/gust_pass.gif).
 
